@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+.logo {
+  font-family: "Josefin Sans", sans-serif;;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; scroll-behavior: smooth; }
+
+:root {
+  --bg: #111;
+  --text: #fff;
+  --accent: #f0b400;
+  --overlay: rgba(0,0,0,0.55);
+  --transition: all 0.3s ease;
+}
+
+
+body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+
+.header {
+  background: rgba(0,0,0,0.85);
+  height: 60px;
+  display: flex; align-items: center;
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+}
+.header-wrapper {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+}
+.logo { font-size: 20px; font-weight: bold; color: var(--text); text-decoration: none; }
+.logo-tagline { display: block; font-size: 12px; opacity: 0.8; }
+.nav a {
+  color: var(--text); margin-left: 20px; text-decoration: none; font-size: 14px;
+  transition: var(--transition);
+}
+.nav a:hover { color: var(--accent); }
+
+
+.home {
+  height: 100vh;
+  background: url('./image/image\ 2.jpg') no-repeat center/cover;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  position: relative; padding: 0 20px;
+}
+.home::after { content: ""; position: absolute; inset: 0; background: var(--overlay); }
+.home-inner { position: relative; z-index: 1; max-width: 800px; }
+.home-title { font-size: 40px; margin-bottom: 20px; }
+.home-text { font-size: 16px; }
+
+
+.about { padding: 80px 20px; }
+.about-title { font-size: 28px; color: var(--accent); margin-bottom: 20px; text-align: center; }
+.about-text { margin-bottom: 16px; text-align: center; }
+
+
+.projects { padding: 80px 20px; }
+.projects-title { font-size: 28px; color: var(--accent); margin-bottom: 30px; text-align: center; }
+.projects-grid {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+}
+.project-card { text-align: center; }
+.project-card img {
+  width: 300px; height: 200px; object-fit: cover; border-radius: 10px;
+  transition: var(--transition);
+}
+.project-card img:hover { transform: scale(1.05); }
+.project-btn {
+  display: inline-block; margin-top: 12px; padding: 10px 20px;
+  background: var(--accent); color: #111; border-radius: 40px;
+  text-decoration: none; font-weight: bold; transition: var(--transition);
+}
+.project-btn:hover { background: #fff; color: var(--accent); }
+.projects-video { text-align: center; margin-top: 40px; }
+.video-btn {
+  display: inline-block; padding: 12px 24px; background: var(--accent);
+  border-radius: 30px; color: #111; text-decoration: none; font-weight: bold;
+  transition: var(--transition);
+}
+.video-btn:hover { background: #fff; color: var(--accent); }
+
+
+.contacts { padding: 80px 20px; }
+.contacts-title { font-size: 28px; color: var(--accent); margin-bottom: 20px; text-align: center; }
+.contacts-text { text-align: center; margin-bottom: 20px; }
+.contact-list { list-style: none; text-align: center; font-size: 18px; }
+.contact-list li { margin: 10px 0; }
+
+
+.footer { text-align: center; padding: 20px; background: #0b0b0b; color: rgba(255,255,255,0.7); }
+
+
+@media (max-width: 768px) {
+  .home-title { font-size: 28px; }
+  .project-card img { width: 100%; height: auto; }
+  .nav { display: none; } 
+}
+.about, .projects, .contacts {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.about.show, .projects.show, .contacts.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  gap: 5px;
+}
+.burger span {
+  display: block;
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.burger--active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burger--active span:nth-child(2) { opacity: 0; }
+.burger--active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+
+@media (max-width: 768px) {
+  .burger { display: flex; }
+  .nav { display: none; flex-direction: column; gap: 20px; }
+  .nav.nav--active { display: flex; background: rgba(0,0,0,0.95); padding: 20px; }
+}
